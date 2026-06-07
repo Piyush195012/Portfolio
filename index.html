@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Piyush Singh - Application Security Engineer | Penetration Testing | DevSecOps | Bug Bounty" />
+    <title>Piyush Singh | Application Security Engineer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+    <!-- FontAwesome & Custom Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./terminal.js"></script>
+</head>
+
+<body>
+    <!-- Background Matrix Rain Canvas -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Scrolling Ticker Bar -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-content">
+                <span class="text-cyber-primary"><i class="fas fa-shield-halved"></i> SECURE WORKSTATION ACTIVE</span>
+                <span class="text-muted">//</span>
+                <span><i class="fas fa-trophy text-cyber-primary"></i> BUG BOUNTY:</span>
+                <span class="d-inline-flex align-items-center"><img src="images/nvidia.png" class="ticker-logo logo-nvidia" alt="Nvidia" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/ferrari.png" class="ticker-logo logo-ferrari" alt="Ferrari" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/bosch.png" class="ticker-logo logo-bosch" alt="Bosch" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/philips.png" class="ticker-logo logo-philips" alt="Philips" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/michelin.png" class="ticker-logo logo-michelin" alt="Michelin" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/inflectra.png" class="ticker-logo logo-inflectra" alt="Inflectra" /></span>
+                <span class="text-muted">•</span>
+                <span class="text-light font-weight-bold d-inline-flex align-items-center"><i class="fas fa-user-shield text-cyber-primary me-1" style="font-size:0.85rem;"></i> REDVILLA</span>
+                <span class="text-muted">//</span>
+                <span class="text-cyber-cyan"><i class="fas fa-network-wired"></i> SYSTEM AUDITS: SECURED</span>
+            </div>
+            <div class="ticker-content">
+                <span class="text-cyber-primary"><i class="fas fa-shield-halved"></i> SECURE WORKSTATION ACTIVE</span>
+                <span class="text-muted">//</span>
+                <span><i class="fas fa-trophy text-cyber-primary"></i> BUG BOUNTY:</span>
+                <span class="d-inline-flex align-items-center"><img src="images/nvidia.png" class="ticker-logo logo-nvidia" alt="Nvidia" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/ferrari.png" class="ticker-logo logo-ferrari" alt="Ferrari" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/bosch.png" class="ticker-logo logo-bosch" alt="Bosch" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/philips.png" class="ticker-logo logo-philips" alt="Philips" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/michelin.png" class="ticker-logo logo-michelin" alt="Michelin" /></span>
+                <span class="text-muted">•</span>
+                <span class="d-inline-flex align-items-center"><img src="images/inflectra.png" class="ticker-logo logo-inflectra" alt="Inflectra" /></span>
+                <span class="text-muted">•</span>
+                <span class="text-light font-weight-bold d-inline-flex align-items-center"><i class="fas fa-user-shield text-cyber-primary me-1" style="font-size:0.85rem;"></i> REDVILLA</span>
+                <span class="text-muted">//</span>
+                <span class="text-cyber-cyan"><i class="fas fa-network-wired"></i> SYSTEM AUDITS: SECURED</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand brand-logo d-flex align-items-center gap-3" href="#">
+                <span>PS</span>
+                <span class="status-badge d-flex align-items-center gap-2">
+                    <span class="pulse-dot bg-success rounded-circle d-inline-block"
+                        style="width:10px;height:10px;"></span>
+                    OPERATIONAL
+                </span>
+                <span id="hud-clock" class="d-none d-md-inline font-monospace text-muted small" style="font-size:0.75rem;"></span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+
+                <div class="d-flex gap-3 ms-lg-4">
+                    <a href="https://github.com/Piyush-Singh-Cyber" target="_blank" class="text-light fs-5">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/piyush-s-ba4188215/" target="_blank" class="text-light fs-5">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="container-fluid min-vh-100 d-flex align-items-center pt-5"
+        style="background: linear-gradient(135deg, #0a0a0a 0%, #001a10 100%);">
+        <div class="container pt-5 z-1">
+            <div class="row align-items-center g-5">
+
+                <div class="col-12 col-lg-7" data-aos="fade-right" data-aos-delay="100">
+                    <div class="operator-dossier-card position-relative p-4 mb-4 bg-black border border-secondary rounded-4 overflow-hidden">
+                        <!-- Tech corner brackets -->
+                        <div class="dossier-corner top-left"></div>
+                        <div class="dossier-corner top-right"></div>
+                        <div class="dossier-corner bottom-left"></div>
+                        <div class="dossier-corner bottom-right"></div>
+
+                        <!-- Header HUD status -->
+                        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom border-secondary pb-3">
+                            <span class="font-monospace text-cyber-primary text-uppercase small tracking-widest">
+                                <i class="fas fa-folder-open me-2"></i>OPERATOR_DOSSIER // PS_ACTIVE
+                            </span>
+                            <span class="status-badge d-flex align-items-center gap-2">
+                                <span class="pulse-dot bg-success rounded-circle d-inline-block" style="width: 8px; height: 8px;"></span>
+                                IDENTIFIED
+                            </span>
+                        </div>
+
+                        <!-- Bio / Photo Row -->
+                        <div class="row g-4 align-items-center">
+                            <!-- Avatar scanner container -->
+                            <div class="col-md-4 text-center text-md-start">
+                                <div class="avatar-scanner-container position-relative mx-auto mx-md-0" style="width: 120px; height: 120px;">
+                                    <img src="images/profile.jpeg" alt="Piyush Singh" class="avatar-img img-fluid w-100 h-100 object-fit-cover rounded-3 border border-secondary">
+                                    <div class="avatar-scan-line"></div>
+                                    <div class="avatar-crt-overlay"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Identity Metadata -->
+                            <div class="col-md-8">
+                                <h1 class="mb-2 text-glow fs-3 font-monospace text-center text-md-start">
+                                    PIYUSH SINGH <small class="text-muted fs-6 small">[HE/HIM]</small>
+                                </h1>
+                                <div class="font-monospace mb-1" style="font-size: 0.88rem;">
+                                    <div class="d-flex align-items-center mb-1 text-cyber-cyan justify-content-center justify-content-md-start">
+                                        <i class="fas fa-shield-halved text-cyber-primary me-2"></i> Application Security Engineer
+                                    </div>
+                                    <div class="d-flex align-items-center mb-1 text-cyber-cyan justify-content-center justify-content-md-start">
+                                        <i class="fas fa-terminal text-cyber-primary me-2"></i> Senior Penetration Tester
+                                    </div>
+                                    <div class="d-flex align-items-center text-cyber-cyan justify-content-center justify-content-md-start">
+                                        <i class="fas fa-code text-cyber-primary me-2"></i> DevSecOps Specialist
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Grid Metadata -->
+                        <div class="dossier-meta-grid my-4 p-3 bg-black-50 border border-secondary rounded font-monospace">
+                            <div class="row g-3 text-center text-md-start">
+                                <div class="col-6 col-md-3">
+                                    <div class="meta-label text-muted small">CLIENTS ASSESSED</div>
+                                    <div class="meta-value text-cyber-primary small">500+</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="meta-label text-muted small">ONSITE ASSESSMENTS</div>
+                                    <div class="meta-value text-cyber-cyan small">150+</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="meta-label text-muted small">HALL OF FAME</div>
+                                    <div class="meta-value text-warning small">7+ RECOGNITIONS</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="meta-label text-muted small">DEPLOYMENTS</div>
+                                    <div class="meta-value text-light small">AE / KR / IN</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bio Description inside capabilities summary -->
+                        <div class="dossier-bio-section font-monospace p-3 mb-4 rounded border border-secondary bg-black-50">
+                            <div class="bio-tech-header text-muted small mb-2">// CAPABILITIES_SUMMARY:</div>
+                            <p class="mb-0 hero-description text-light" style="font-size: 0.9rem; line-height: 1.5;">
+                                Application Security Engineer with hands-on experience across consulting and product
+                                environments, securing web applications, APIs, mobile platforms, and enterprise infrastructure.
+                                Experienced in penetration testing, vulnerability validation, remediation guidance, and
+                                automation-driven security testing for enterprise and critical infrastructure clients.
+                            </p>
+                        </div>
+
+                        <!-- Active certs & Action buttons in dossier -->
+                        <div class="d-flex align-items-center justify-content-between gap-3 font-monospace mt-3 border-top border-secondary pt-3 flex-nowrap">
+                            <div class="d-flex align-items-center gap-2 flex-shrink-1 overflow-hidden">
+                                <span class="text-muted small d-none d-sm-inline">// CERTS:</span>
+                                <span class="tag tag-tactical text-nowrap"><i class="fas fa-shield-alt me-1 text-cyber-primary"></i> CEH</span>
+                                <span class="tag tag-tactical text-nowrap"><i class="fas fa-terminal me-1 text-cyber-primary"></i> CRTP</span>
+                            </div>
+                            <div class="d-flex gap-2 flex-shrink-0">
+                                <a href="./Piyush_Singh_Resume.pdf" class="btn btn-cyber btn-sm text-nowrap" download>
+                                    <i class="fas fa-file-download me-1"></i>Resume
+                                </a>
+                                <a href="https://www.linkedin.com/in/piyush-s-ba4188215/" target="_blank"
+                                    class="btn btn-outline-cyber btn-sm text-nowrap">
+                                    <i class="fas fa-paper-plane me-1"></i>Contact
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5 mt-0" data-aos="fade-left" data-aos-delay="100">
+                    <div class="console-box rounded-4 overflow-hidden cyber-glow border border-secondary bg-black">
+                        <!-- Console Header with Tabs -->
+                        <div class="console-header d-flex align-items-center justify-content-between px-3 py-2 bg-black border-bottom border-secondary">
+                            <div class="d-flex gap-2 align-items-center">
+                                <span class="console-dot bg-danger rounded-circle d-inline-block" style="width:10px;height:10px;"></span>
+                                <span class="console-dot bg-warning rounded-circle d-inline-block" style="width:10px;height:10px;"></span>
+                                <span class="console-dot bg-success rounded-circle d-inline-block" style="width:10px;height:10px;"></span>
+                            </div>
+                            <div class="d-flex gap-3 font-monospace">
+                                <button class="hero-tab-btn btn btn-link p-0 text-decoration-none text-muted small" data-tab="terminal">shell.sh</button>
+                                <button class="hero-tab-btn active btn btn-link p-0 text-decoration-none text-light small font-bold" data-tab="camera">cam_feed.dev</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab 1: Terminal Shell -->
+                        <div id="terminal-view" class="console-body p-3 bg-black d-none">
+                            <div class="terminal-controls mb-2 d-flex justify-content-between align-items-center font-monospace">
+                                <span class="terminal-user text-muted small">guest@secops.piyush:~$</span>
+                                <button id="sound-toggle-btn" class="btn btn-sm btn-outline-secondary font-monospace" style="font-size: 0.72rem; padding: 1px 6px;">
+                                    <i class="fas fa-volume-mute"></i> Muted
+                                </button>
+                            </div>
+                            <div id="terminal-body" class="terminal-text-area font-monospace overflow-auto" style="height: 450px; font-size: 0.88rem;">
+                                <div id="terminal-history"></div>
+                                <form id="terminal-form" class="d-flex align-items-center mt-2">
+                                    <span class="prompt-arrow text-cyber-green me-2">&gt;</span>
+                                    <input type="text" id="terminal-input" class="bg-transparent border-0 text-light w-100 p-0" style="outline: none; box-shadow: none;" autocomplete="off" placeholder="type 'help'..." />
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab 2: Photos Stream (Dynamic CCTV Viewer) -->
+                        <div id="camera-view" class="console-body p-0 bg-black position-relative">
+                            <div class="cctv-container position-relative overflow-hidden w-100" style="height: 450px;">
+                                <!-- CCTV Overlays -->
+                                <div class="cctv-overlay position-absolute top-0 start-0 w-100 p-2 d-flex justify-content-between font-monospace small" style="z-index: 2; text-shadow: 1px 1px 2px black; color: var(--cyber-green); pointer-events: none;">
+                                    <div>
+                                        <span class="blink text-danger font-bold">● REC</span>
+                                        <span class="ms-2">SEC_CAM_01</span>
+                                    </div>
+                                    <div id="cctv-filename">R5_09976.JPG</div>
+                                </div>
+                                <div class="cctv-overlay position-absolute bottom-0 start-0 w-100 p-2 d-flex justify-content-between font-monospace small" style="z-index: 2; text-shadow: 1px 1px 2px black; color: var(--cyber-green); pointer-events: none;">
+                                    <div>RES: 8192x5464 (8K)</div>
+                                    <div id="cctv-index">1 / 28</div>
+                                </div>
+                                
+                                <!-- CCTV Feed Image -->
+                                <img id="cctv-image" src="assets/R5_09976.JPG.jpeg" alt="CCTV Operations Feed" class="w-100 h-100" style="object-fit: contain; background-color: #000000; transition: opacity 0.25s ease; cursor: pointer;" />
+                                
+                                <!-- CRT scanlines overlay -->
+                                <div class="cctv-scanline position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)); background-size: 100% 4px, 6px 100%; pointer-events: none; opacity: 0.5; z-index: 1;"></div>
+                            </div>
+                            <!-- CCTV Controls -->
+                            <div class="cctv-controls d-flex align-items-center justify-content-between px-3 py-2 bg-black border-top border-secondary font-monospace">
+                                <button id="cctv-prev-btn" class="btn btn-sm btn-outline-cyber"><i class="fas fa-chevron-left"></i> PREV</button>
+                                <button id="cctv-play-btn" class="btn btn-sm btn-outline-cyber"><i class="fas fa-pause"></i> PAUSE</button>
+                                <button id="cctv-next-btn" class="btn btn-sm btn-outline-cyber">NEXT <i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none d-md-block text-center banner-img" data-aos="fade-left" data-aos-delay="300">
+            <img src="images/profile-hero.png" alt="Work Environment" class="img-fluid rounded shadow-lg"
+                style="max-height: 520px; object-fit: cover; border: 1px solid #222;">
+        </div>
+    </section>
+
+    <div class="container-fluid bg-black py-2 border-bottom border-top border-secondary telemetry-hud-bar">
+        <div class="container">
+            <div class="row text-center text-md-start font-monospace small" style="color: var(--cyber-green);">
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <span>[ PROTOCOL ]</span> <span class="text-light">HTTPS/TLS1.3</span>
+                </div>
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <span>[ CLIENT IP ]</span> <span id="hud-ip" class="text-light">127.0.0.1</span>
+                </div>
+                <div class="col-md-3 mb-2 mb-md-0">
+                    <span>[ CPU LOAD ]</span> <span id="hud-cpu" class="text-light">2.14%</span>
+                </div>
+                <div class="col-md-3 text-md-end">
+                    <span>[ PKT_COUNT ]</span> <span id="hud-packets" class="text-light">4821</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-5">
+        <!-- Security Impact  -->
+        <section id="impact" class="py-5 impact-section">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Security Impact</h2>
+
+                <div class="row g-4">
+
+                    <div class="col-md-3 impact-card">
+                        <div class="">
+                            <h2>40+</h2>
+                            <p>Automated security checks built into testing workflows</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 impact-card">
+                        <div class="">
+                            <h2>30+</h2>
+                            <p>Client environments assessed across web, infra, and networks</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 impact-card">
+                        <div class="">
+                            <h2>10+</h2>
+                            <p>Critical infrastructure onsite assessments completed</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 impact-card">
+                        <div class="">
+                            <h2>40%</h2>
+                            <p>Reduction in manual reconnaissance effort via automation</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Expertise -->
+        <section id="expertise" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Core Expertise</h2>
+                <div class="row g-4">
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Application Security</h4>
+                            <ul class="list-unstyled">
+                                <li>Web & API Security Testing</li>
+                                <li>Mobile Security (Android/iOS)</li>
+                                <li>OWASP Top 10 • CVE • CWE • CVSS</li>
+                                <li>Vulnerability Triage & Reporting</li>
+                                <li>Secure SDLC / DevSecOps</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Penetration Testing</h4>
+                            <ul class="list-unstyled">
+                                <li>Network & Wireless Pentest</li>
+                                <li>Red Teaming Fundamentals</li>
+                                <li>Active Directory Assessments</li>
+                                <li>Infrastructure Security</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Security Analysis</h4>
+                            <ul class="list-unstyled">
+                                <li>SAST / DAST / SCA</li>
+                                <li>Auth & Authorization Flaws</li>
+                                <li>Business Logic Vulnerabilities</li>
+                                <li>IDOR & Misconfigurations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Tooling</h4>
+                            <ul class="list-unstyled">
+                                <li>Burp Suite • Nmap • Wireshark</li>
+                                <li>Metasploit • Nessus • SQLmap</li>
+                                <li>BloodHound • Impacket • CME</li>
+                                <li>FFUF • Amass</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Automation & Dev</h4>
+                            <ul class="list-unstyled">
+                                <li>Python & Bash Automation</li>
+                                <li>CI/CD Security (GitHub/GitLab)</li>
+                                <li>Linux & Windows AD</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="py-5 bg-dark">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Professional Experience</h2>
+                <div class="row g-4 justify-content-center">
+
+                    <!-- Confidential -->
+                    <div class="col-lg-10">
+                        <div class="card p-4">
+                            <div class="d-flex justify-content-between flex-wrap gap-3 mb-3">
+                                <div>
+                                    <h4 class="mb-1">Senior Penetration Tester</h4>
+                                    <div class="text-cyber-green">Confidential Client</div>
+                                </div>
+                                <div class="text-muted">ABU DHABI</div>
+                            </div>
+                            <ul>
+                                <li>Led penetration testing and Red Team engagements across infrastructure, web,
+                                    mobile, and networks to identify exploitable vulnerabilities and assess
+                                    security posture</li>
+                                <li>Developed exploits, testing methodologies, and conducted remediation
+                                    validation to ensure effective vulnerability closure</li>
+                                <li>Delivered risk-focused reports and communicated findings to both technical
+                                    and business stakeholders for actionable remediation</li>
+                                <li>Performed threat modeling, secure code reviews, and mentored junior team
+                                    members to strengthen overall security maturity</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ralfkairos -->
+                    <div class="col-lg-10">
+                        <div class="card p-4">
+                            <div class="d-flex justify-content-between flex-wrap gap-3 mb-3">
+                                <div>
+                                    <h4 class="mb-1">Application Security Engineer</h4>
+                                    <div class="text-cyber-green">Ralfkairos — South Korea</div>
+                                </div>
+                                <div class="text-muted">07/2025 – 01/2026</div>
+                            </div>
+
+                            <div class="card-body row justify-content-between">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Performed security assessments across web applications, APIs, internal
+                                            networks, and mobile applications (iOS and Android) in pre-production and
+                                            production-adjacent environments</li>
+                                        <li>Identified OWASP Top 10 issues, authentication and authorization flaws,
+                                            IDORs, misconfigurations, and business logic vulnerabilities</li>
+                                        <li>Built and maintained repeatable testing environments and exploitation
+                                            scenarios to reliably validate complex vulnerabilities across web, network,
+                                            and mobile surfaces</li>
+                                        <li>Improved testing efficiency and signal quality by standardizing
+                                            reconnaissance and exploitation workflows and evaluating automation-assisted
+                                            testing approaches (e.g. Xbow)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-5 d-flex flex-column mb-4" style="height: 50vh;">
+                                    <div class="w-75 h-50">
+                                        <img src="images/ralfkairos-1.jpeg" alt="SCADA"
+                                            class="img-fluid rounded achievement-img">
+                                    </div>
+
+                                    <div class="w-75 h-50 mx-5">
+                                        <img src="images/ralfkairos-2.jpeg" alt="Badge"
+                                            class="img-fluid rounded achievement-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cybersrc -->
+                    <div id="cybersrc" class="col-lg-10">
+                        <div class="card p-4">
+                            <div class="card-title">
+                                <div class="d-flex justify-content-between flex-wrap gap-3 mb-3">
+                                    <div>
+                                        <h4 class="mb-1">Associate Security Analyst</h4>
+                                        <div class="text-cyber-green">Cybersrc — India</div>
+                                    </div>
+                                    <div class="text-muted">01/2025 – 07/2025</div>
+                                </div>
+                            </div>
+
+                            <div class="card-body row">
+                                <div class="col-md-5 d-flex flex-column mb-4" style="height: 50vh;">
+                                    <div class="w-75 h-50">
+                                        <img src="images/scada-infrastructure.png" alt="SCADA"
+                                            class="img-fluid rounded achievement-img">
+                                    </div>
+
+                                    <div class="w-75 h-50 mx-5">
+                                        <img src="images/cybersrc-badge.jpg" alt="Badge"
+                                            class="img-fluid rounded achievement-img">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Performed Vulnerability Assessment and Penetration Testing (VAPT)
+                                            across web applications, infrastructure, and internal networks for
+                                            30+ clients</li>
+                                        <li>Conducted onsite security assessments at 10+ locations, including
+                                            critical infrastructure environments such as power plants</li>
+                                        <li>Supported compliance teams through technical evidence validation,
+                                            scope clarification, and infrastructure risk interpretation</li>
+                                        <li>Managed multiple security engagements simultaneously, handling
+                                            client communication, status updates, and delivery timelines</li>
+                                        <li>Developed custom scripts, proof-of-concept exploits, and automation
+                                            tooling to validate emerging vulnerabilities and reduce manual
+                                            effort</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Others -->
+                    <div class="col-lg-10">
+                        <div class="card row flex-row justify-content-around px-3 py-5">
+
+                            <div class="col-lg-6">
+
+                                <div id="dover" class="mb-5">
+                                    <h5 class="mb-1">VAPT</h5>
+                                    <div class="text-cyber-green mb-2">Dover Corporation</div>
+                                    <div class="text-muted small mb-3">06/2024 – 08/2024</div>
+
+                                    <ul class="mb-0">
+                                        <li>Found 5+ critical vulnerabilities (CVSS 8+)</li>
+                                        <li>Delivered actionable remediation reports</li>
+                                    </ul>
+                                </div>
+
+                                <div id="tech-m">
+                                    <div class="d-flex justify-content-between flex-wrap mb-3">
+                                        <div>
+                                            <h5 class="mb-1">VAPT</h5>
+                                            <div class="text-cyber-green">Tech Mahindra</div>
+                                        </div>
+
+                                        <div class="text-muted small">06/2023 – 08/2023</div>
+                                    </div>
+
+                                    <ul class="mb-0">
+                                        <li>Supported VAPT for Australian Union project</li>
+                                        <li>Contributed to remediation tracking</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="tech-m" style="height: 50vh;">
+                                    <img src="images/tech-mahindra.png" alt="Tech Mahindra"
+                                        class="img-fluid rounded mb-3 achievement-img">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Security Projects</h2>
+                <div class="row g-4">
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Tracedrill</h4>
+                            <div class="mb-3">
+                                <span class="tag">Python</span><span class="tag">Automation</span><span
+                                    class="tag">DevSecOps</span>
+                            </div>
+                            <p>Security automation platform — reconnaissance, misconfiguration detection, OWASP Top 10
+                                testing.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Recon-Automator</h4>
+                            <div class="mb-3">
+                                <span class="tag">Python</span><span class="tag">CLI</span><span
+                                    class="tag">OSINT</span>
+                            </div>
+                            <p>CLI + web interface reconnaissance tool — improved efficiency by ~40%.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 p-4">
+                            <h4 class="text-cyber-green mb-3">Google Dorking Query Generator</h4>
+                            <div class="mb-3">
+                                <span class="tag">OSINT</span><span class="tag">Automation</span>
+                            </div>
+                            <p>Simplifies complex Google dork creation for exposed assets discovery.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section id="achievements" class="py-5 bg-dark">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Achievements & Recognition</h2>
+
+                <div class="row g-4 justify-content-center">
+                    <!-- Nvidia -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card">
+                            <div class="hof-logo-wrapper mb-3">
+                                <img src="images/nvidia.png" alt="Nvidia Logo" class="hof-logo logo-nvidia" />
+                            </div>
+                            <h5 class="mb-2 text-light">Nvidia</h5>
+                            <span class="badge bg-secondary font-monospace small" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;">VDP Hall of Fame</span>
+                        </div>
+                    </div>
+
+                    <!-- Ferrari -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card cursor-pointer" onclick="openHofModal('images/ferrari-hof.png', 'Ferrari Hall of Fame Proof')">
+                            <div class="hof-logo-wrapper mb-3">
+                                <img src="images/ferrari.png" alt="Ferrari Logo" class="hof-logo logo-ferrari" />
+                            </div>
+                            <h5 class="mb-2 text-light">Ferrari</h5>
+                            <span class="badge bg-success font-monospace small cursor-pointer" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;"><i class="fas fa-certificate"></i> View Proof</span>
+                        </div>
+                    </div>
+
+                    <!-- Bosch -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card cursor-pointer" onclick="openHofModal('images/bosch-hof.png', 'Bosch Hall of Fame Proof')">
+                            <div class="hof-logo-wrapper mb-3">
+                                <img src="images/bosch.png" alt="Bosch Logo" class="hof-logo logo-bosch" />
+                            </div>
+                            <h5 class="mb-2 text-light">Bosch</h5>
+                            <span class="badge bg-success font-monospace small cursor-pointer" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;"><i class="fas fa-certificate"></i> View Proof</span>
+                        </div>
+                    </div>
+
+                    <!-- Philips -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card">
+                            <div class="hof-logo-wrapper mb-3">
+                                <img src="images/philips.png" alt="Philips Logo" class="hof-logo logo-philips" />
+                            </div>
+                            <h5 class="mb-2 text-light">Philips</h5>
+                            <span class="badge bg-secondary font-monospace small" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;">VDP Hall of Fame</span>
+                        </div>
+                    </div>
+
+                    <!-- Michelin -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card">
+                            <div class="hof-logo-wrapper mb-3">
+                                <img src="images/michelin.png" alt="Michelin Logo" class="hof-logo logo-michelin" />
+                            </div>
+                            <h5 class="mb-2 text-light">Michelin</h5>
+                            <span class="badge bg-secondary font-monospace small" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;">VDP Hall of Fame</span>
+                        </div>
+                    </div>
+
+                    <!-- Inflectra -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card cursor-pointer" onclick="openHofModal('images/inflectra-hof.jpg', 'Inflectra Hall of Fame Proof')">
+                            <div class="hof-logo-wrapper mb-3">
+                                <img src="images/inflectra.png" alt="Inflectra Logo" class="hof-logo logo-inflectra" />
+                            </div>
+                            <h5 class="mb-2 text-light">Inflectra</h5>
+                            <span class="badge bg-success font-monospace small cursor-pointer" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;"><i class="fas fa-certificate"></i> View Proof</span>
+                        </div>
+                    </div>
+
+                    <!-- Redvilla -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100 p-4 text-center d-flex flex-column align-items-center justify-content-between hof-card cursor-pointer" onclick="openHofModal('images/redvilla-hof.png', 'Redvilla Hall of Fame Proof')">
+                            <div class="hof-logo-wrapper mb-3 d-flex align-items-center justify-content-center" style="height: 60px;">
+                                <i class="fas fa-user-shield text-light fs-1"></i>
+                            </div>
+                            <h5 class="mb-2 text-light">Redvilla</h5>
+                            <span class="badge bg-success font-monospace small cursor-pointer" style="font-size: 0.72rem; padding: 0.35rem 0.65rem;"><i class="fas fa-certificate"></i> View Proof</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section id="recommendations" class="py-5">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Recommendations</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <img src="images/rec-abhishek-cisco.png" alt="Abhishek - Cisco"
+                            class="img-fluid rounded rec-img">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <img src="images/rec-julien.png" alt="Julien" class="img-fluid rounded rec-img">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <img src="images/rec-poras.png" alt="Poras" class="img-fluid rounded rec-img">
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <img src="images/rec-kangwon.png" alt="Kangwon" class="img-fluid rounded rec-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="py-5 bg-dark">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title text-center">Certifications & Training</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-6 col-md-4 col-lg-3" style="height: 25vh;">
+                        <img src="images/ceh-certificate.png" alt="CEH" class="img-fluid rounded cert-img">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3" style="height: 25vh;">
+                        <img src="images/crtp-certificate.png" alt="CRTP" class="img-fluid rounded cert-img">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3" style="height: 25vh;">
+                        <img src="images/tcm-security-cert.png" alt="TCM Security" class="img-fluid rounded cert-img">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3" style="height: 25vh;">
+                        <img src="images/incapp-java-cert.png" alt="Java Cert" class="img-fluid rounded cert-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Interests -->
+        <section class="my-5">
+            <div class="container py-5" data-aos="fade-up">
+                <div class="row g-5">
+
+                    <div class="col-lg-6">
+                        <h2 class="section-title">Education</h2>
+                        <div class="card p-4">
+                            <h4>Bachelor of Technology, Computer Science</h4>
+                            <p class="mb-1">Sharda University</p>
+                            <p class="text-muted">Sept 2021 – 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h2 class="section-title">Interests & Tools</h2>
+                        <p class="lead mb-4">Hardware hacking • Wireless security • Custom security tooling</p>
+                        <div class="row g-3">
+                            <div class="col-6 col-md-4" style="height: 15vh;">
+                                <img src="images/wifi-adapter.png" alt="WiFi" class="img-fluid rounded mb-2 cert-img">
+                                <p class="text-center small">Wireless Security</p>
+                            </div>
+                            <div class="col-6 col-md-4" style="height: 15vh;">
+                                <img src="images/arduino-board.png" alt="Arduino"
+                                    class="img-fluid rounded mb-2 cert-img">
+                                <p class="text-center small">Hardware / BadUSB</p>
+                            </div>
+                            <div class="col-6 col-md-4 mt-5 mt-md-3" style="height: 15vh;">
+                                <img src="images/defcon-badge-inner.jpg" alt="Defcon"
+                                    class="img-fluid rounded mb-2 cert-img">
+                                <p class="text-center small">Community</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-5 bg-dark">
+            <div class="container text-center" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="small mb-4 d-md-flex align-items-center justify-content-around">
+                    <p class="mb-2">
+                        <!-- <i class="fas fa-envelope me-2"></i> -->
+                        <span class="px-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-envelope-at" viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z" />
+                                <path
+                                    d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z" />
+                            </svg>
+                        </span>
+                        <a href="mailto:piyushsingh12212@gmail.com"
+                            class="text-cyber-green">piyushsingh12212@gmail.com</a>
+                    </p>
+                    <p class="mb-2">
+                        <!-- <i class="fas fa-phone me-2"></i> -->
+                        <span class="px-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                            </svg>
+                        </span>
+                        <a href="tel:+971542153512" class="text-cyber-green">+971-542153512</a>
+                    </p>
+                    <p class="mb-2">
+                        <!-- <i class="fab fa-linkedin me-2"></i> -->
+                        <span class="px-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-linkedin" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                            </svg>
+                        </span>
+                        <a href="https://www.linkedin.com/in/piyush-s-ba4188215/" target="_blank"
+                            class="text-cyber-green">
+                            linkedin.com/in/piyush-s-ba4188215
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-black text-center py-4 border-top border-secondary">
+        <p class="text-muted mb-0">© 2025 Piyush Singh • All rights reserved.</p>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./animations.js"></script>
+
+    <!-- Recommendation Image -->
+    <div id="imageModal" class="image-modal">
+        <button class="close-modal">&times;</button>
+        <img id="modalImage" src="" alt="">
+    </div>
+</body>
+
+</html>

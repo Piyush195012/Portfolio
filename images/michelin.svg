@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 35" width="100%" height="100%">
+  <circle cx="12" cy="12" r="9" fill="#2196F3" />
+  <path d="M10,8 C11,8 13,9 14,11 C15,13 14,15 12,16 C10,16 9,15 9,13 C9,11 10,8 10,8 Z" fill="#ffffff" />
+  <text x="27" y="22" font-family="'Space Grotesk', sans-serif" font-style="italic" font-weight="bold" font-size="13" fill="#ffffff" letter-spacing="0.5">MICHELIN</text>
+</svg>
