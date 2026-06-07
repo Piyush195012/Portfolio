@@ -652,7 +652,6 @@ const CCTV_IMAGES = [
     "assets/R5_09970.JPG.jpeg",
     "assets/R5_09855.JPG.jpeg",
     "assets/R5_09859.JPG.jpeg",
-    "assets/R5_09861.JPG.jpeg",
     "assets/R5_09862.JPG.jpeg",
     "assets/R5_09864.JPG.jpeg",
     "assets/R5_09908.JPG.jpeg",
